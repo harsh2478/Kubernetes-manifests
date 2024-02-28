@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: deploy
+  name: AppService
+  namespace: default
+spec:
+  clusterIP: 10.101.18.90
+  clusterIPs:
+  - 10.101.18.90
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ports:
+  - nodePort: 31798
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: deploy
+  type: NodePort

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy
+  name: deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploy
+    spec:
+      containers:
+      - image: docker.io/kanha05/mywebsite:latest
+        imagePullPolicy: Always
+        name: mywebsite
+      restartPolicy: Always
+status: {}
