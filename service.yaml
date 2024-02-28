@@ -6,15 +6,8 @@ metadata:
   name: AppService
   namespace: default
 spec:
-  clusterIP: 10.101.18.90
-  clusterIPs:
-  - 10.101.18.90
-  externalTrafficPolicy: Cluster
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
   ports:
-  - nodePort: 31798
+  - nodePort: 32000
     port: 80
     protocol: TCP
     targetPort: 80
